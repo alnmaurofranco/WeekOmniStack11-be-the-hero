@@ -1,4 +1,5 @@
 const express = require("express");
+const { errors } = require("celebrate");
 const cors = require("cors");
 const routes = require("./routes");
 const app = express();
@@ -6,6 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(routes);
+app.use(errors());
 /**
  * MÉTODOS HTTP:
  * GET: BUSCAR INFORMAÇÕES DO BACK-END
@@ -21,4 +23,4 @@ app.use(routes);
  * REQUEST PARAMS => CORPO DA REQUISIÇÃO, ULTILIZADO PARA CRIAR OU ALTERAR RECURSOS
  */
 
-app.listen(3333);
+module.exports = app;
