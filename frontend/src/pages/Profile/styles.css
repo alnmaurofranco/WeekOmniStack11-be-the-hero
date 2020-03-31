@@ -69,6 +69,13 @@
   opacity: 0.8;
 }
 
+.edit {
+  right: 45px !important;
+  top: 0;
+  border: 0;
+  position: absolute;
+}
+
 .profile-container ul li strong {
   display: block;
   margin-bottom: 16px;
@@ -83,4 +90,18 @@
   color: #737380;
   line-height: 21px;
   font-size: 16px;
+}
+
+.profile-container .edit-section {
+  width: 100%;
+}
+
+.profile-container .edit-section form {
+  width: 100%;
+  max-width: 1450px;
+}
+
+.profile-container .edit-section form input,
+.profile-container .edit-section form textarea {
+  margin-top: 8px;
 }

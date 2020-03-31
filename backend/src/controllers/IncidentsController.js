@@ -1,6 +1,20 @@
 const connection = require("../database/connection");
 
 module.exports = {
+  async create(request, response) {
+    const { title, description, value } = request.body;
+    const ong_id = request.headers.authorization;
+
+    const [id] = await connection("incidents").insert({
+      title,
+      description,
+      value,
+      ong_id
+    });
+
+    return response.json({ id });
+  },
+
   async index(request, response) {
     const { page = 1 } = request.query;
 
@@ -24,18 +38,29 @@ module.exports = {
     return response.json(incidents);
   },
 
-  async create(request, response) {
-    const { title, description, value } = request.body;
+  async update(request, response) {
+    const { id } = request.params;
     const ong_id = request.headers.authorization;
+    const { title, description, value } = request.body;
 
-    const [id] = await connection("incidents").insert({
-      title,
-      description,
-      value,
-      ong_id
-    });
+    const incident = await connection("incidents")
+      .where("id", id)
+      .select("ong_id")
+      .first();
 
-    return response.json({ id });
+    if (incident.ong_id !== ong_id) {
+      return response.status(401).json({ error: "Operation not permitted" });
+    }
+
+    const updateIncidents = await connection("incidents")
+      .where("id", id)
+      .update({
+        title,
+        description,
+        value
+      });
+
+    return response.status(200).json(updateIncidents);
   },
 
   async delete(request, response) {
