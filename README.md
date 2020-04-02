@@ -1,6 +1,23 @@
-# Be The Hero | Semana OmniStack 11.0 23 até 27 de março 2020
+# Be The Hero | Semana OmniStack 11.0
 
-- Semana OmniStack 11 | Aplicação com React, React Native, Express JS entre outros..
+## Quais linguagens foram trabalhada ?
 
-
-- dasdas
+   ## FRONT-END
+  - ReactJS
+  - Axios
+  - ReactIcons
+  
+  ## BACK-END
+  - ExpressJS
+  - KnexJS
+  - SQL Lite 3
+  - Nodemon
+  - Axios
+  - Celebrate
+  - JEST
+  - Cors
+  
+  ## MOBILE
+  - Expo
+  - React Native
+  - Axios
